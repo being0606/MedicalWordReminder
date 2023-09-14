@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어 암기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        #word {
+            font-size: 28px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 80%;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #progress {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="word"></div>
+<button onclick="revealWord()">확인하기</button>
+<div id="progress"></div>
+
+<script>
+    const wordPairs = [
+        { eng: "apple", kor: "사과" },
+        { eng: "banana", kor: "바나나" },
+        { eng: "cherry", kor: "체리" },
+        { eng: "date", kor: "대추" },
+        { eng: "elephant", kor: "코끼리" },
+        { eng: "fish", kor: "물고기" },
+        { eng: "grape", kor: "포도" },
+        { eng: "hat", kor: "모자" },
+        { eng: "ice cream", kor: "아이스크림" },
+        { eng: "jacket", kor: "자켓" },
+        { eng: "kite", kor: "연" },
+        { eng: "lemon", kor: "레몬" },
+        { eng: "monkey", kor: "원숭이" },
+        { eng: "note", kor: "노트" },
+        { eng: "orange", kor: "오렌지" },
+        { eng: "pencil", kor: "연필" },
+        { eng: "question", kor: "질문" },
+        { eng: "rabbit", kor: "토끼" },
+        { eng: "snake", kor: "뱀" },
+        { eng: "turtle", kor: "거북이" }
+    ];
+
+    let currentIndex = 0;
+    let isRevealed = false;
+
+    function displayWord() {
+        isRevealed = false;
+        const word = Math.random() < 0.5 ? wordPairs[currentIndex].eng : wordPairs[currentIndex].kor;
+        document.getElementById('word').innerText = word;
+        document.getElementById('progress').innerText = `${currentIndex + 1} / ${wordPairs.length}`;
+    }
+
+    function revealWord() {
+        if (!isRevealed) {
+            document.getElementById('word').innerText = `${wordPairs[currentIndex].eng} - ${wordPairs[currentIndex].kor}`;
+            isRevealed = true;
+        } else {
+            currentIndex++;
+            if (currentIndex >= wordPairs.length) {
+                window.location.href = "3.html"; // 모든 단어를 다 보았을 때 3.html로 이동
+            } else {
+                displayWord();
+            }
+        }
+    }
+
+    // 초기 단어 표시
+    displayWord();
+</script>
+
+</body>
+</html>
