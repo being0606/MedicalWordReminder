@@ -261,6 +261,9 @@ const wordPairs = [
     { eng: "tricuspid valve", kor: "오른방실판막" }
 ];
 
+// 배열의 순서를 랜덤하게 바꿉니다.
+wordPairs.sort(() => Math.random() - 0.5);
+
 let currentIndex = 0;
 let isRevealed = false;
 

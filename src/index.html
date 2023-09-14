@@ -52,21 +52,40 @@
             text-decoration: underline;
         }
 
+        label {
+            font-size: 14px;
+            /* margin-right: 1px; */
+        }
+
     </style>
 </head>
 
 <body>
     <h1>[간호] 2023 2학기 단어 1차</h1>
 
-    <a href="2.html">
-        <button>암기시작하기</button>
+    <!-- 체크박스와 라벨 추가 -->
+   
+
+    <a href="#" onclick="startMemorization()">
+        <button style="margin-bottom: 4px;">암기시작하기</button>
     </a>
+
+    <div style="margin-bottom: 4px;">
+        <label for="randomOrder">랜덤으로 암기하기</label>
+        <input type="checkbox" id="randomOrder">
+    </div>
 
     <div class="footer">
         <p>contact : <a href="mailto:onuhjin@gmail.com">onuhjin@gmail.com</a></p>
         <p>instagram : <a href="https://instagram.com/__be__ing" target="_blank">@__be__ing</a></p>
     </div>
 
+    <script>
+        function startMemorization() {
+            const isRandom = document.getElementById('randomOrder').checked;
+            window.location.href = isRandom ? '4.html' : '2.html';
+        }
+    </script>
 </body>
 
 </html>
