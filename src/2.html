@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,65 +51,109 @@
             color: #333;
         }
 
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
     </style>
 </head>
+
 <body>
 
-<div id="word"></div>
-<button onclick="revealWord()">확인하기</button>
-<div id="progress"></div>
+    <div id="word"></div>
+    <div class="button-container">
+        <button onclick="previousWord()">이전</button>
+        <button onclick="revealWord()">확인하기</button>
+        <button onclick="nextWord()">다음</button>
+    </div>
+    <div id="progress"></div>
 
-<script>
-    const wordPairs = [
-        { eng: "apple", kor: "사과" },
-        { eng: "banana", kor: "바나나" },
-        { eng: "cherry", kor: "체리" },
-        { eng: "date", kor: "대추" },
-        { eng: "elephant", kor: "코끼리" },
-        { eng: "fish", kor: "물고기" },
-        { eng: "grape", kor: "포도" },
-        { eng: "hat", kor: "모자" },
-        { eng: "ice cream", kor: "아이스크림" },
-        { eng: "jacket", kor: "자켓" },
-        { eng: "kite", kor: "연" },
-        { eng: "lemon", kor: "레몬" },
-        { eng: "monkey", kor: "원숭이" },
-        { eng: "note", kor: "노트" },
-        { eng: "orange", kor: "오렌지" },
-        { eng: "pencil", kor: "연필" },
-        { eng: "question", kor: "질문" },
-        { eng: "rabbit", kor: "토끼" },
-        { eng: "snake", kor: "뱀" },
-        { eng: "turtle", kor: "거북이" }
-    ];
+    <script>
+        const wordPairs = [
+            { eng: "affect", kor: "정동" },
+            { eng: "agitation", kor: "초조" },
+            { eng: "alertness", kor: "각성도" },
+            { eng: "absorption", kor: "흡수" },
+            { eng: "access", kor: "접근" },
+            { eng: "accident", kor: "사고" },
+            { eng: "achievement", kor: "성취" },
+            { eng: "acid", kor: "산" },
+            { eng: "acquisition", kor: "취득" },
+            { eng: "adaptation", kor: "적응" },
+            { eng: "addition", kor: "추가" },
+            { eng: "administration", kor: "관리" },
+            { eng: "adulthood", kor: "성년" },
+            { eng: "advancement", kor: "진보" },
+            { eng: "advertisement", kor: "광고" },
+            { eng: "advice", kor: "조언" },
+            { eng: "affection", kor: "애정" },
+            { eng: "aftermath", kor: "여파" },
+            { eng: "agreement", kor: "협약" },
+            { eng: "air", kor: "공기" },
+            { eng: "alarm", kor: "알람" },
+            { eng: "alcohol", kor: "알코올" },
+            { eng: "alienation", kor: "소외" },
+            { eng: "allegation", kor: "주장" },
+            { eng: "allergy", kor: "알레르기" },
+            { eng: "alliance", kor: "동맹" },
+            { eng: "allocation", kor: "할당" },
+            { eng: "alternative", kor: "대안" },
+            { eng: "ambition", kor: "야망" },
+            { eng: "ammunition", kor: "탄약" },
+            { eng: "amusement", kor: "즐거움" },
+            { eng: "analogy", kor: "유사" },
+            { eng: "anger", kor: "분노" },
+            { eng: "angle", kor: "각도" },
+            { eng: "animal", kor: "동물" },
+            { eng: "annoyance", kor: "괴로움" },
+            { eng: "answer", kor: "답" },
+            { eng: "anxiety", kor: "불안" },
+            { eng: "apology", kor: "사과" },
+            { eng: "appetite", kor: "식욕" }
+            // ... 그리고 다른 단어 쌍들 ...
+        ];
 
-    let currentIndex = 0;
-    let isRevealed = false;
 
-    function displayWord() {
-        isRevealed = false;
-        const word = Math.random() < 0.5 ? wordPairs[currentIndex].eng : wordPairs[currentIndex].kor;
-        document.getElementById('word').innerText = word;
-        document.getElementById('progress').innerText = `${currentIndex + 1} / ${wordPairs.length}`;
-    }
+        let currentIndex = 0;
+        let isRevealed = false;
 
-    function revealWord() {
-        if (!isRevealed) {
-            document.getElementById('word').innerText = `${wordPairs[currentIndex].eng} - ${wordPairs[currentIndex].kor}`;
-            isRevealed = true;
-        } else {
-            currentIndex++;
-            if (currentIndex >= wordPairs.length) {
-                window.location.href = "3.html"; // 모든 단어를 다 보았을 때 3.html로 이동
+        function displayWord() {
+            isRevealed = false;
+            const word = Math.random() < 0.5 ? wordPairs[currentIndex].eng : wordPairs[currentIndex].kor;
+            document.getElementById('word').innerText = word;
+            document.getElementById('progress').innerText = `${currentIndex + 1} / ${wordPairs.length}`;
+        }
+
+        function revealWord() {
+            if (!isRevealed) {
+                document.getElementById('word').innerText = `${wordPairs[currentIndex].eng} - ${wordPairs[currentIndex].kor}`;
+                isRevealed = true;
             } else {
+                nextWord();
+            }
+        }
+
+        function nextWord() {
+            if (currentIndex < wordPairs.length - 1) {
+                currentIndex++;
+                displayWord();
+            } else {
+                window.location.href = "3.html";
+            }
+        }
+
+        function previousWord() {
+            if (currentIndex > 0) {
+                currentIndex--;
                 displayWord();
             }
         }
-    }
 
-    // 초기 단어 표시
-    displayWord();
-</script>
+        // 초기 단어 표시
+        displayWord();
+    </script>
 
 </body>
 </html>
