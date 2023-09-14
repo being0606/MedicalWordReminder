@@ -1,40 +1,72 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>단어장 시작</title>
     <style>
-        /* 여기에 필요한 CSS를 나중에 추가할 수 있습니다. */
-
-        /* 가운데 정렬을 위한 스타일 */
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* viewport height로 화면 높이 전체를 채웁니다. */
-            font-family: Arial, sans-serif; /* 기본 폰트 설정 */
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
         }
 
         button {
+            margin: 20px 0;
             padding: 10px 20px;
             font-size: 20px;
             cursor: pointer;
             border: none;
-            background-color: #4CAF50; /* 버튼 배경색 */
-            color: white; /* 버튼 텍스트 색 */
-            border-radius: 5px; /* 버튼 모서리 둥글게 */
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
         }
 
         button:hover {
-            background-color: #45a049; /* 마우스 오버시 버튼 배경색 */
+            background-color: #45a049;
         }
+
+        .footer {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
+
 <body>
-    <!-- 버튼 클릭 시 2.html 페이지로 이동 -->
+    <h1>[간호] 2023 2학기 단어 1차</h1>
+
     <a href="2.html">
         <button>암기시작하기</button>
     </a>
+
+    <div class="footer">
+        <p>contact : <a href="mailto:onuhjin@gmail.com">onuhjin@gmail.com</a></p>
+        <p>instagram : <a href="https://instagram.com/__be__ing" target="_blank">@__be__ing</a></p>
+    </div>
+
 </body>
+
 </html>
